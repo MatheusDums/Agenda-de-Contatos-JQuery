@@ -37,7 +37,7 @@ if(isset($_POST['id'])) {
 
             <div class="row pt-4">
                 <label for="observacoes" class="form-label">Observações</label>
-                <textarea class="form-control" id="observacoes" name="observacoes" rows="3" value="'. $dados['con_observacoes'] .'"></textarea>
+                <textarea class="form-control" id="observacoes" name="observacoes" rows="3">' . $dados['con_observacoes'] .'</textarea>
             </div>
 
             <div class="row pt-4">
