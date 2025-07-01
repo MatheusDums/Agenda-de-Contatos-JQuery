@@ -16,6 +16,7 @@ if(isset($_POST['id'])) {
     <form action="" method="POST" id="form" class="form-group">
         <input type="hidden" id="id" name="id" value="">
             <div class="col">
+                <input type="hidden" class="form-control" name="id" id="id" value="'. $dados['con_id'] .'">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="'. $dados['con_nome'] .'">
             </div>
@@ -42,21 +43,33 @@ if(isset($_POST['id'])) {
 
             <div class="row pt-4">
             <div class="col">
-                <input id="salvarCadastro" class="btn btn-success col-12" type="submit" value="Salvar">
+                <input id="update" class="btn btn-success col-12 botao-envia update" type="submit" value="Salvar">
             </div>
 
             <div class="col">
-                <input class="btn btn-danger col-12" value="Excluir">
+                <input class="btn btn-danger col-12 cancelar" value="Cancelar">
             </div>
         </div>
     </form>
     ';
+} elseif(isset($_POST['del'])) {
+    $id = $_POST['del'];
+    $sql = "DELETE FROM tb_contatos WHERE con_id = :id";
+    $cmd = $pdo->prepare($sql);
+    $cmd->bindValue(":id", $id);
+    $cmd->execute();
+
+    if($cmd->rowCount() >= 1) {
+        $base .= "<p class='alert alert-success text-center'>Contato excluido com sucesso!</p>";
+
+    } else {
+        $base .= "<p class='alert alert-danger text-center'>Falha ao excluir contato.</p>";
+    }
 } else {
     $sql = "SELECT con_id, con_nome, con_telefone, con_email, con_nascimento, con_observacoes FROM tb_contatos";
     $cmd = $pdo->prepare($sql);
     $cmd->execute();
     $dados = $cmd->fetchAll(PDO::FETCH_ASSOC);
-/*     var_dump($dados); */
 
     foreach($dados as $dados_ct)
     $base .= '
@@ -70,7 +83,10 @@ if(isset($_POST['id'])) {
             <td><input type="submit" name="excluir" id="'. $dados_ct['con_id'] .'" value="Excluir" class="btn btn-danger excluir"></td>
         </tr>
     ';
-}
+
+} 
+
+
 
 echo $base;
 

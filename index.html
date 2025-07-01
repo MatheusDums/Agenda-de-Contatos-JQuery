@@ -1,131 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Agenda de Contatos - JQuery</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1 class="text-center p-3">Agenda de contatos Bud - JQuery</h1>
-        <div class="row">
-            <div class="col resp"></div>
-        </div>
-        <div class="formulario">
-            <form action="" method="POST" id="form" class="form-group">
-                <input type="hidden" id="id" name="id" value="">
-                <div class="col">
-                    <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
-                </div>
-                <div class="col">
-                    <label for="telefone" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone">
-                </div>
-            
-                <div class="row pt-3">
-                    <div class="col">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@email.com">
-                    </div>
-                    <div class="col">
-                        <label for="nascimento" class="form-label">Nascimento</label>
-                        <input type="date" class="form-control" name="nascimento" id="nascimento">
-                    </div>
-                </div>
-                <div class="row pt-4">
-                    <label for="observacoes" class="form-label">Observações</label>
-                    <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
-                </div>
-                <div class="row pt-4">
-                    <div class="col">
-                        <input id="salvarCadastro" class="btn btn-success col-12" type="submit" value="Salvar">
-                    </div>
-                    <div class="col">
-                        <input class="btn btn-danger col-12" value="Excluir">
-                    </div>
-                </div>
-            
-            </form>
+      <h1 class="text-center p-3">Agenda de contatos Bud - JQuery</h1>
+      <div class="row">
+        <div class="col resp"></div>
+      </div>
+      <div class="formulario">
+        <form action="" method="POST" id="form" class="form-group">
+          <div class="col">
+            <label for="nome" class="form-label">Nome</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nome"
+              id="nome"
+              placeholder="Nome"
+            />
+          </div>
+          <div class="col">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input
+              type="text"
+              class="form-control"
+              name="telefone"
+              id="telefone"
+              placeholder="Telefone"
+            />
+          </div>
+
+          <div class="row pt-3">
+            <div class="col">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="exemplo@email.com"
+              />
             </div>
+            <div class="col">
+              <label for="nascimento" class="form-label">Nascimento</label>
+              <input
+                type="date"
+                class="form-control"
+                name="nascimento"
+                id="nascimento"
+              />
+            </div>
+          </div>
+          <div class="row pt-4">
+            <label for="observacoes" class="form-label">Observações</label>
+            <textarea
+              class="form-control"
+              id="observacoes"
+              name="observacoes"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="row pt-4">
+            <div class="col">
+              <input
+                id="enviar"
+                class="btn btn-success col-12 botao-envia"
+                type="submit"
+                value="Salvar"
+              />
+            </div>
+            <div class="col">
+              <input
+                id="cancelar"
+                class="btn btn-danger col-12 cancelar"
+                value="Cancelar"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
 
-        <h2 class="text-center p-3">Agenda de Contatos</h2>
+      <h2 class="text-center p-3">Agenda de Contatos</h2>
 
-        <table class="table">
+      <table class="table">
         <thead class="text-center">
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Email</th>
-                <th scope="col">Nascimento</th>
-                <th scope="col">Observações</th>
-                <th scope="col" colspan="2">Ação</th>
-            </tr>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Nascimento</th>
+            <th scope="col">Observações</th>
+            <th scope="col" colspan="2">Ação</th>
+          </tr>
         </thead>
 
-        <tbody class="text-center table_body">
-
-        </tbody>
+        <tbody class="text-center table_body"></tbody>
 
         <div id="messages"></div>
-        </table>
+      </table>
     </div>
-    
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
     <script>
-    $(document).ready(function(){
-        $(document).on('submit','#form', function(e) {
-            e.preventDefault(); 
-            /* para adicionar um contato */       
-            $.ajax({
-                url: 'assets/php/adicionar.php',
-                method: 'POST',
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-            }).done(function(data){
-                $(".resp").html(data);
-                setTimeout(function(){
-                    $(".resp").html('');
-                }, 3000);    
-            })
-        })
+      $(document).ready(function () {
+        $(document).on("submit", "#form", function (e) {
+          e.preventDefault();
+          /* para adicionar um contato */
+          $.ajax({
+            url: "assets/php/adicionar.php",
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+          }).done(function (data) {
+            $(".resp").html(data);
+            setTimeout(function () {
+              $(".resp").html("");
+            }, 3000);
+          });
+        });
 
         /* para colocar os dados na tabela */
         function contato() {
-            $.ajax({
-                url: 'assets/php/select.php',
-                method: 'GET'
-            }).done(function(data){
-                $(".table_body").html(data);
-            })
+          $.ajax({
+            url: "assets/php/select.php",
+            method: "GET",
+          }).done(function (data) {
+            $(".table_body").html(data);
+          });
         }
-        setInterval(contato,1000);
+        setInterval(contato, 1000);
 
         /* para editar um contato */
-        $(document).on('click', '.editar', function(e) {
-            e.preventDefault(); /* não atualiza a página caso ocorra algum erro */
-            var id = $(this).attr('id')
-            $.ajax({
-                url: 'assets/php/select.php',
-                method: 'POST',
-                data:{
-                    id: id
-                }
-            }).done(function(data){
-                $(".formulario").html(data);
-            })
+        $(document).on("click", ".editar", function (e) {
+          e.preventDefault(); /* não atualiza a página caso ocorra algum erro */
+          var id = $(this).attr("id");
+          $.ajax({
+            url: "assets/php/select.php",
+            method: "POST",
+            data: {
+              id: id,
+            },
+          }).done(function (data) {
+            $(".formulario").html(data);
+          });
+        });
+
+        /* para atualizar um contato */
+        $(document).on("submit", ".update", function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: "assets/php/adicionar.php",
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+          }).done(function (data) {
+            limpa()
+            $(".resp").html(data);
+            $("#nome").val("");
+            setTimeout(function () {
+              $(".resp").html("");
+            }, 3000);
+          });
+        });
+
+        /* para excluir um contato */
+        $(document).on("click", ".excluir", function (e) {
+          e.preventDefault(); /* não atualiza a página caso ocorra algum erro */
+          var del = $(this).attr("id");
+          $.ajax({
+            url: "assets/php/select.php",
+            method: "POST",
+            data: {
+              del: del,
+            },
+          }).done(function (data) {
+            $(".resp").html(data);
+            limpa()
+            setTimeout(function () {
+              $(".resp").html("");
+            }, 3000);
+          });
+        });
+
+        /* para limpar o formulario (pelo botão) */
+        function limpa() {
+          $("#nome, #telefone, #email, #nascimento, #observacoes").val("");
+        }
+
+        $(document).on('click', '.cancelar', function() {
+            limpa()
         })
-
-    })
-
-
+      });
     </script>
-</body>
-</html>  
+  </body>
+</html>
