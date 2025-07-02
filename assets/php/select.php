@@ -15,7 +15,7 @@ if(isset($_POST['id'])) {
     $base .= '
     <form action="" method="POST" id="form" class="form-group">
         <input type="hidden" id="id" name="id" value="">
-            <div class="col">
+            <div class="col first-col">
                 <input type="hidden" class="form-control" name="id" id="id" value="'. $dados['con_id'] .'">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="'. $dados['con_nome'] .'">
