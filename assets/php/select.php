@@ -11,7 +11,7 @@ if(isset($_POST['id'])) {
     $cmd->bindValue(":id", $id);
     $cmd->execute();
     $dados = $cmd->fetch();
-
+     
     $base .= '
     <form action="" method="POST" id="form" class="form-group">
         <input type="hidden" id="id" name="id" value="">
@@ -69,10 +69,10 @@ if(isset($_POST['id'])) {
     $sql = "SELECT con_id, con_nome, con_telefone, con_email, con_nascimento, con_observacoes FROM tb_contatos";
     $cmd = $pdo->prepare($sql);
     $cmd->execute();
-    $dados = $cmd->fetchAll(PDO::FETCH_ASSOC);
+    $dados = $cmd->fetchAll(PDO::FETCH_ASSOC);   
 
-    foreach($dados as $dados_ct)
-    $base .= '
+    foreach($dados as $dados_ct) {
+        $base .= '
         <tr>
             <td scope="col">'. $dados_ct['con_nome'] .'</td>
             <td scope="col">'. $dados_ct['con_telefone'] .'</td>
@@ -83,10 +83,9 @@ if(isset($_POST['id'])) {
             <td><input type="submit" name="excluir" id="'. $dados_ct['con_id'] .'" value="Excluir" class="btn btn-danger excluir"></td>
         </tr>
     ';
-
-} 
-
-
+    }
+    
+}  
 
 echo $base;
 

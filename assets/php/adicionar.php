@@ -3,7 +3,7 @@ include "conector.php";
 $erro = array();
 $saida = "";
 
-if(isset($_POST['id'])) { /* atualiza */
+if(isset($_POST['id'])) { /* caso reconheça que tem um id, atualiza, se não segue pro código de baixo e cria um contato no db */
     $nome = addslashes($_POST['nome']);
     $telefone = addslashes($_POST['telefone']);
     $email = addslashes($_POST['email']);
@@ -11,7 +11,6 @@ if(isset($_POST['id'])) { /* atualiza */
     $observacoes = addslashes($_POST['observacoes']);
     $id = $_POST['id'];
 
-    /* caso reconheça que tem um id, atualiza, se não segue pro código de baixo e cria um contato no db */
     $sql = "UPDATE tb_contatos SET con_nome = :nm,  con_telefone = :tf, con_email = :em, con_nascimento = :ns, con_observacoes = :ob 
         WHERE con_id = :id";
     $cmd = $pdo->prepare($sql);
@@ -30,11 +29,6 @@ if(isset($_POST['id'])) { /* atualiza */
         $saida .= "<p class='alert alert-danger text-center'>Falha ao atualizar contato.</p>";
     }
 
-/*     $nome = ' ';
-    $telefone = ' ';
-    $email = ' ';
-    $nascimento = ' ';
-    $observacoes = ' '; */
 
 } else { /* cadastra no banco de dados */
     $nome = addslashes($_POST['nome']);
@@ -69,10 +63,8 @@ if(isset($_POST['id'])) { /* atualiza */
         } else {
             $saida .= "<p class='alert alert-danger text-center'>Falha no cadastro.</p>";
         }
-        
     }
 }
-
 
 if(isset($erro['e'])) { /* caso esteja um campo sem preencher, irá aparecer o erro */
     $saida .= "<p class='alert alert-danger text-center'>" . $erro['e'] . "</p>";
